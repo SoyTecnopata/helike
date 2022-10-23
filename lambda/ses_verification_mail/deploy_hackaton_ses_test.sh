@@ -1,0 +1,1 @@
+chalice deploy --profile hackathon --connection-timeout 3600 ;
