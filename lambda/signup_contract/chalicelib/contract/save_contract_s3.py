@@ -2,9 +2,13 @@
 # -*- coding: utf-8 -*-
 from chalicelib.utils import dynamo_utils, s3_utils
 from chalicelib.data import config
+import urllib3
+
+HTTP = urllib3.PoolManager()
 table_name = 'pulsar_retargeting'
 
 HTML_TEXT = """
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,15 +16,23 @@ HTML_TEXT = """
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitar firma de usuario</title>
-    <link rel="stylesheet" href="estilo.css">
+    <title>Contrato de Tarjeta AQUA BBVA COLOMBIA</title>
 </head>
 
 <body>
-    <h1 align="center">Este es tu contrato {} </h1>
-    <hr>
-    <p>CONTRATO DE TARJETA DE CREDITO QUE CELEBRAN, POR UNA PARTE BBVA COLOMBIA Y
-        POR LA OTRA PARTE Y POR SU PROPIO DERECHO,<b> {} {} {}</b></p>
+    <img src="descarga.png" alt="Logo BBVA">
+    <h1 align="center"><b><p style= "color:#000080";>CONTRATO TARJETA AQUA BBVA COLOMBIA </p></b></h1>
+    <p>El presente documento lo celebran por una parte <b></b> a quien de aquí en adelante se llamará "EL CLIENTE", y por otra parte la empresa BBVA COLOMBIA, a quien a partir de ahora se le denominará como "EL BANCO".</p>
+    <p><b>DECLARACIONES</b>: Ambas partes declaran que es su voluntad celebrar el presente contrato. Que cuentan con capacidad jurídica para celebrarlo. Las partes declaran estar de acuerdo con las siguientes clausulas.</p>
+    <section>
+    <h2><b><p style= "color:#000080";>Cláusulas</p></b></h2>
+    <p>PRIMERA: OBJETIVO DEL CONTRATO. EL objetivo del presente contrato es el otorgamiento del producto Tarjeta de Crédito Aqua por parte "EL BANCO" a "EL CLIENTE"</p>
+    <p>SEGUNDA: CARACTERÍSTICAS DEL PRODUCTO. La línea de crédito del producto será de $8000 y tendrá fehca de corte de el día 2 de cada mes, a partir de la contración del producto.</p>
+    </section>
+    <p>TERCERA: FALLECIMIENTO DE "EL CLIENTE". En caso de fallecimiento de "EL CLIENTE" al momento en que se notifica a "EL BANCO" de tal circunstancia este condonará el saldo del deudor a partir de la fecha de fallecimiento de "EL CLIENTE"</p>
+    </section>
+    <section>
+    <h2><b><p style= "color:#000080";>Firma</p></b></h2>
     <p>Firmar a continuación:</p>
     <canvas id="canvas"></canvas>
     <br>
@@ -28,8 +40,6 @@ HTML_TEXT = """
     <button id="btnGenerarDocumento">Pasar a documento</button>
     <br>
     <script src="script.js"></script>
-</body>
-
 </html>
 """
 
@@ -110,6 +120,7 @@ $canvas.addEventListener("mousemove", (evento) => {
 """
 
 SIGN_DOCU_TEXT = """
+
 <!--hackaton BBVA Helike-->
 <!DOCTYPE html>
 <html lang="en">
@@ -118,36 +129,21 @@ SIGN_DOCU_TEXT = """
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documento con firma de Alma</title>
-    <style>
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
+    <title>Contrato de Tarjeta AQUA BBVA COLOMBIA</title>
 </head>
 
-<body>
-    <h1>Título del documento</h1>
-    <strong>Simple documento para demostrar cómo se puede colocar una firma del usuario</strong>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et magnam eius reprehenderit repudiandae, veritatis
-        aliquid a iste! Eos necessitatibus omnis maiores doloremque? Ipsam rem omnis saepe architecto quam molestias
-        asperiores.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam unde veritatis, aut exercitationem in voluptatum
-        aliquid rem deleniti non quas dignissimos asperiores laborum omnis similique esse, neque autem sit possimus.</p>
-    <p>Quos veniam incidunt animi distinctio, itaque voluptate laudantium voluptates doloribus ipsa praesentium qui
-        veritatis perferendis rerum dicta a, non esse cupiditate nemo mollitia exercitationem nesciunt explicabo,
-        debitis dolores. Mollitia, similique.</p>
-    <p>Deleniti sapiente rem beatae officia libero similique iste, vitae aut? Voluptatum aperiam fugit placeat adipisci,
-        consequatur reiciendis voluptatem eius dolore qui. Cumque delectus iste earum, explicabo error quas rerum nam!
-    </p>
-    <p>Porro tempore ipsa enim a dolore explicabo totam. Quos veniam repellendus quo excepturi voluptatibus eum
-        provident corrupti debitis nesciunt neque ipsa, consequatur qui illo perferendis mollitia omnis sit cum sunt.
-    </p>
-    <p>Aliquid saepe quod recusandae at adipisci veniam quasi delectus maiores magni fuga accusamus ex, facere, vero
-        voluptatem temporibus odit maxime. Fuga assumenda suscipit repellat sapiente, porro sit repudiandae doloremque
-        officiis.</p>
+<body>  
+    <img src="descarga.png" alt="Logo BBVA">
+    <h1 align="center"><b><p style= "color:#000080";>CONTRATO TARJETA AQUA BBVA COLOMBIA </p></b></h1>
+    <p>El presente documento lo celebran por una parte <b></b> a quien de aquí en adelante se llamará "EL CLIENTE", y por otra parte la empresa BBVA COLOMBIA, a quien a partir de ahora se le denominará como "EL BANCO".</p>
+    <p><b>DECLARACIONES</b>: Ambas partes declaran que es su voluntad celebrar el presente contrato. Que cuentan con capacidad jurídica para celebrarlo. Las partes declaran estar de acuerdo con las siguientes clausulas.</p>
+    <section>
+    <h2><b><p style= "color:#000080";>Cláusulas</p></b></h2>
+    <p>PRIMERA: OBJETIVO DEL CONTRATO. EL objetivo del presente contrato es el otorgamiento del producto Tarjeta de Crédito Aqua por parte "EL BANCO" a "EL CLIENTE"</p>
+    <p>SEGUNDA: CARACTERÍSTICAS DEL PRODUCTO. La línea de crédito del producto será de $8000 y tendrá fehca de corte de el día 2 de cada mes, a partir de la contración del producto.</p>
+    </section>
+    <p>TERCERA: FALLECIMIENTO DE "EL CLIENTE". En caso de fallecimiento de "EL CLIENTE" al momento en que se notifica a "EL BANCO" de tal circunstancia este condonará el saldo del deudor a partir de la fecha de fallecimiento de "EL CLIENTE"</p>
+    </section>
     <h2>A continuación la firma</h2>
     <img src="" alt="Firma del usuario" id="firma">
     <br>
@@ -155,16 +151,24 @@ SIGN_DOCU_TEXT = """
         if (window.opener) {
             document.querySelector("#firma").src = window.opener.obtenerImagen();
             //window.document.write("s3://pulsar-contratos/customers/53038780/contracts/documento.pdf");
-            
             //document.execCommand("SaveAs",true,"s3://pulsar-contratos/customers/53038780/contracts/documento.pdf");
             window.print()
         }
     </script>
-</body>
+<script src="/d03cf3ed97767c082c4608f3d138a6255a11e30dc39d6d532396d0f24db96404/ns.js"></script></body>
 
 </html>
+
 """
 URL_LINK = "https://pulsar-contratos.s3.us-east-1.amazonaws.com/customers/%2B{}/contracts/index.html"
+
+URL_IMAGE_CONTRACT_LINK = "https://pulsar-contratos.s3.us-east-1.amazonaws.com/customers/%2B525551871818/contracts/descarga.png"
+
+
+IMAGE = HTTP.request(
+            "GET",
+            URL_IMAGE_CONTRACT_LINK,
+        ).data
 
 def read_customer_data(customer_id=53038780, keys=['nombre']):
     """read customer data and return it in json format"""
@@ -196,9 +200,25 @@ def write_html_contract_in_s3(customer_id=53038780):
     name = data['nombre']
     last_name_1 = data['apellido_1']
     last_name_2 = data['apellido_2']
-    contract_text = HTML_TEXT.format(name, name,
-                                     last_name_1, last_name_2
-                                     )
+    #contract_text = HTML_TEXT.format(name,
+    #                                 last_name_1, last_name_2
+    #                                 )
+
+    #contract_text2 = SIGN_DOCU_TEXT.format(name,
+    #                                 last_name_1, last_name_2
+    #                                  )
+
+    contract_text = HTML_TEXT
+
+    contract_text2 = SIGN_DOCU_TEXT
+
+
+    s3_utils.save(IMAGE,
+                  "Writing customer_id image contract",
+                  config.DEV_BUCKET,
+                  index_s3_file,
+                  content_type='image/png'
+                  )
 
     s3_utils.save(contract_text,
                   "Writing customer_id index contract",
@@ -221,7 +241,7 @@ def write_html_contract_in_s3(customer_id=53038780):
                   content_type='application/javascript'
                   )
 
-    s3_utils.save(SIGN_DOCU_TEXT,
+    s3_utils.save(contract_text2,
                   "Writing customer_id document contract",
                   config.DEV_BUCKET,
                   contract_s3_file,

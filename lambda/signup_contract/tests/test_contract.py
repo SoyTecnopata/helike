@@ -13,11 +13,23 @@ ENDPOINT = "https://863rvsbrg1.execute-api.us-east-1.amazonaws.com/api/"
 
 
 class TestVersion(unittest.TestCase):
+
+    def test_get_link(self):
+        """ """
+        response = HTTP.request(
+                "GET",
+                ENDPOINT,
+            ).data.decode("utf-8")
+
+        # model versions
+        ok_value = 'Hello from the hackaton contract test'
+
+        self.assertEqual(response == ok_value, True)
     def test_write_contract(self):
         """ """
 
         x = {
-            "customer_id": '+5215544031548'
+            "customer_id": '+525551871818'
         }
 
         response = json.loads(
@@ -33,6 +45,6 @@ class TestVersion(unittest.TestCase):
         customer_id = response["write_customer_data_contract"]
 
         # model versions
-        ok_value = '+5215544031548'
+        ok_value = '+525551871818'
 
         self.assertEqual(customer_id == ok_value, True)

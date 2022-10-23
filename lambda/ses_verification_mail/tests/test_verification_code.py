@@ -13,31 +13,25 @@ ENDPOINT = "https://lmxcjhpqn3.execute-api.us-east-1.amazonaws.com/api/"
 
 
 class TestVersion(unittest.TestCase):
+
+    def test_get_link(self):
+        """ """
+        response = HTTP.request(
+                "GET",
+                ENDPOINT,
+            ).data.decode("utf-8")
+
+        # model versions
+        ok_value = 'Hello from the hackaton ses test'
+
+        self.assertEqual(response == ok_value, True)
+
     def test_sending_verification_code(self):
         """ """
 
         x = {
-            "email": "hackathonhelike@gmail.com",
-            "customer_id": "a0000"
-        }
-
-        x = {
             "email": "samorogu@gmail.com",
-            "customer_id": "a0001"
-        }
-
-        x = {
-            "email": "jimenasantiago.b@gmail.com"
-        }
-
-        x = {
-            "email": "emmanuelfhorn@gmail.com",
-            "customer_id": "a0002"
-        }
-
-        x = {
-            "email": "r.j.m.suastegui@gmail.com",
-            "customer_id": "a0003"
+            "celular": "+525551871818"
         }
 
         response = json.loads(
@@ -48,12 +42,16 @@ class TestVersion(unittest.TestCase):
                 headers={"Content-Type": "application/json"},
             ).data.decode("utf-8")
         )
+        if 'succesfully' in response.keys():
+            res = 1
+
+        response["mail sent succesfully to: "]
 
         # service model versions
         email_response = response["mail sent succesfully to: "]
 
         # model versions
-        ok_value = "hackathonhelike@gmail.com"
+        ok_value = "samorogu@gmail.com"
 
         self.assertEqual(email_response == ok_value, True)
 
@@ -63,15 +61,9 @@ def test_confirm_verification_code(self):
 
     x = {
         "email": "samorogu@gmail.com",
-        "customer_id": "a0001",
-        "verification_code": 104097
+        "celular": "+525551871818",
+        "verification_code": 440431
     }
-
-    x = {
-            "email": "r.j.m.suastegui@gmail.com",
-            "customer_id": "a0003",
-            "verification_code": 875835
-        }
 
     response = json.loads(
         HTTP.request(
