@@ -16,11 +16,11 @@ def sent_verification_code():
     x = body.get('x', body)
 
     email = body.get('email', {})
-    customer_id = body.get('customer_id', {})
+    customer_phone = body.get('celular', {})
 
     res = verification_email.send_verif_code(
         email=email,
-        customer_id=customer_id
+        customer_phone=customer_phone
     )
 
     return res
@@ -33,11 +33,11 @@ def confirm_verification_code():
     x = body.get('x', body)
 
     email = body.get('email', {})
-    customer_id = body.get('customer_id', {})
+    customer_phone = body.get('celular', {})
     verification_code = body.get('verification_code', {})
 
     res = verification_email.confirmation_verif_code(
-        customer_id=customer_id,
+        customer_phone=customer_phone,
         verification_code = verification_code
     )
 

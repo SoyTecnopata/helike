@@ -6,7 +6,7 @@ app = Chalice(app_name='hackaton_contract_test')
 
 @app.route('/')
 def index():
-    return 'Hello from the hackaton ses test'
+    return 'Hello from the hackaton contract test'
 
 
 @app.route("/write_contract", methods=["POST"])
