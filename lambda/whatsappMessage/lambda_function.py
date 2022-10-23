@@ -3,8 +3,8 @@ import boto3
 
 def lambda_handler(event=None, context=None):
 
-    twilio_sid = 'ACee59125c4a3673329f0c63e3c7d547b2'
-    auth_token = '6580cfe88be446350aed014c8a04ce8f'
+    twilio_sid = ''
+    auth_token = ''
 
     from_number = 'whatsapp:' '+14155238886'
     
